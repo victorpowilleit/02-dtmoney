@@ -6,7 +6,20 @@ import { App } from './App';
 
 createServer({
   models: {
-    transactions: Model,
+    transaction: Model,
+  },
+  seeds(server){
+    server.db.loadData({
+      transactions: [{
+        id: 1,
+        title: 'freelance de website',
+        type: 'deposit',
+        category: 'dev',
+        amount: 6000,
+        createdAt: new Date('2021-02-12 09:00:00')
+        }
+      ],
+    })
   },
   routes(){
     this.namespace = 'api'
